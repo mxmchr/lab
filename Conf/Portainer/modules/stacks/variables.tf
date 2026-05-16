@@ -5,8 +5,7 @@ variable "name" {
 
 variable "deployment_type" {
   description = "Type de déploiement pour le stack Portainer (ex: compose, swarm, kubernetes)"
-  type        = string  
-  default     = "compose"
+  type        = string
 }
 
 variable "method" {
@@ -38,19 +37,20 @@ variable "git_password_wo" {
 
 variable "stack_webhook" {
   description = "Webhook pour le stack Portainer"
-  type        = string  
+  type        = bool
+  default     = false
 }
 
 variable "update_interval" {
   description = "Intervalle de mise à jour pour le stack Portainer (en secondes)"
   type        = string  
-  default     = "10m"
+  default     = null
 }
 
 variable "pull_image" {
   description = "Indique si les images doivent être tirées à chaque mise à jour du stack Portainer"
   type        = bool  
-  default     = true
+  default     = false
 }
 
 variable "force_update" {
@@ -69,6 +69,14 @@ variable "file_path_in_repository" {
   description = "Chemin du fichier de stack dans le dépôt Git pour le stack Portainer"
   type        = string  
   default     = "stack.yml"
+}
+
+variable "env" {
+  type = list(object({
+    name  = string
+    value = string
+  }))
+  default = []
 }
 
 

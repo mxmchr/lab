@@ -22,51 +22,21 @@ variable "s3_endpoint" {
 ### Variables pour Portainer ###
 ############################################
 
-variable "name" {
-  description = "Nom de la stack Portainer"
-  type        = string  
-}
-
-variable "deployment_type" {
-  description = "Type de déploiement (standalone ou swarm)"
-  type        = string
-}
-
-variable "method" {
-  description = "Méthode de déploiement (repository ou file)"
-  type        = string
-}
-
-variable "repository_url" {
-  description = "URL du repository Git pour le déploiement de la stack"
-  type        = string
-}
-
-variable "git_username_wo" {
-  description = "Nom d'utilisateur Git pour accéder au repository"
-  type        = string
-}
-
-variable "git_password_wo" {
-  description = "Mot de passe Git pour accéder au repository"
-  type        = string
-  sensitive   = true
-}
-
-variable "file_path_in_repository" {
-  description = "Chemin du fichier docker-compose.yml dans le repository Git"
-  type        = string
-}
-
-variable "stack_webhook" {
-  description = "Indique si la stack doit être déployée avec un webhook (true ou false)"
-  type        = bool
-  default     = false
-}
-
-variable "repository_wo_version" {
-  description = "Version du dépôt Git pour le stack Portainer (ex: branche, tag, commit)"
-  type        = number
+variable "stacks" {
+  type = map(object({
+    deployment_type         = string
+    method                  = string
+    repository_url          = string
+    git_username_wo         = string
+    git_password_wo         = string
+    file_path_in_repository = string
+    stack_webhook           = bool
+    repository_wo_version   = number
+    env = optional(list(object({
+      name  = string
+      value = string
+    })))
+  }))
 }
 
 variable "portainer_endpoint" {
