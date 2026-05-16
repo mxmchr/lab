@@ -3,12 +3,15 @@ terraform {
   required_providers {
     proxmox = {
       source  = "bpg/proxmox"
-      version = "0.106.0"
+      version = "~> 0.106.0"
     }
-
     cloudflare = {
       source = "cloudflare/cloudflare"
       version = "~> 4"
+    }
+    portainer = {
+      source = "portainer/portainer"
+      version = "~> 1.29.0"
     }
   }
 }
@@ -29,4 +32,10 @@ provider "proxmox" {
       port    = var.ssh_port
     }
   }
+}
+
+provider "portainer" {
+  endpoint = var.portainer_endpoint
+  api_key  = var.portainer_api_key
+  skip_ssl_verify  = false
 }
