@@ -37,7 +37,7 @@ variable "method" {
   type        = string
 }
 
-variable "repository_url_wo" {
+variable "repository_url" {
   description = "URL du repository Git pour le déploiement de la stack"
   type        = string
 }

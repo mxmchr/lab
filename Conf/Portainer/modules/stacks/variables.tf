@@ -20,7 +20,7 @@ variable "repository_wo_version" {
   type        = number  
 }
 
-variable "repository_url_wo" {
+variable "repository_url" {
   description = "URL du dépôt Git pour le stack Portainer"
   type        = string  
 }

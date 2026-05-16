@@ -8,7 +8,7 @@ resource "portainer_stack" "standalone_repo_ephemeral" {
   method                    = var.method
   endpoint_id               = data.portainer_environment.watch.id
 
-  repository_url_wo         = var.repository_url_wo
+  repository_url            = var.repository_url
   repository_username_wo    = var.git_username_wo
   repository_password_wo    = var.git_password_wo
   repository_wo_version     = var.repository_wo_version

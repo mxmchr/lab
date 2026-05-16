@@ -4,7 +4,7 @@ module "portainer_stacks" {
   name = var.name
   deployment_type = var.deployment_type
   method = var.method
-  repository_url_wo = var.repository_url_wo
+  repository_url = var.repository_url
   git_username_wo = var.git_username_wo
   git_password_wo = var.git_password_wo
   file_path_in_repository = var.file_path_in_repository
