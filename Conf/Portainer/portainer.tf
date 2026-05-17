@@ -1,7 +1,19 @@
+module "portainer_environments" {
+  for_each = var.environments
+  source   = "./modules/environments"
+  
+  registry_name           = each.key
+  environment_address     = each.value.environment_address
+  public_ip               = each.value.public_ip
+  type                    = each.value.type
+  group_id                = each.value.group_id
+}
+
 module "portainer_stacks" {
   for_each = var.stacks
   source   = "./modules/stacks"
 
+  environment_name        = each.value.environment_name
   name                    = each.key
   deployment_type         = each.value.deployment_type
   method                  = each.value.method

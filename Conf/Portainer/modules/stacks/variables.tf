@@ -3,6 +3,17 @@ variable "name" {
   type        = string
 }
 
+variable "endpoint_id" {
+  description = "ID de l'endpoint Portainer où le stack doit être déployé"
+  type        = number
+  default = null
+}
+
+variable "environment_name" {
+  description = "Nom de l'environnement Portainer où le stack doit être déployé"
+  type        = string
+}
+
 variable "deployment_type" {
   description = "Type de déploiement pour le stack Portainer (ex: compose, swarm, kubernetes)"
   type        = string

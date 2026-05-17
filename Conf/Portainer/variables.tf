@@ -19,12 +19,27 @@ variable "s3_endpoint" {
 }
 
 ############################################
+###  Portainer Environments ###
+############################################
+
+variable "environments" {
+  type = map(object({
+    environment_address = string
+    public_ip           = string
+    type                = number
+    group_id            = optional(number, 1)
+  }))
+  
+}
+
+############################################
 ### Variables pour Portainer ###
 ############################################
 
 variable "stacks" {
   type = map(object({
     deployment_type         = string
+    environment_name        = string
     method                  = string
     repository_url          = string
     git_username_wo         = string
@@ -32,6 +47,7 @@ variable "stacks" {
     file_path_in_repository = string
     stack_webhook           = bool
     repository_wo_version   = number
+
     env = optional(list(object({
       name  = string
       value = string

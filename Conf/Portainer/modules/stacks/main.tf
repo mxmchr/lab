@@ -1,12 +1,12 @@
-data "portainer_environment" "watch" {
-  name = "Watch"
+data "portainer_environment" "this" {
+  name = var.environment_name
 }
 
 resource "portainer_stack" "standalone_repo_ephemeral" {
   name                          = var.name
   deployment_type               = var.deployment_type
   method                        = var.method
-  endpoint_id                   = data.portainer_environment.watch.id
+  endpoint_id                   = data.portainer_environment.this.id
 
   repository_url                = var.repository_url
   repository_username_wo        = var.git_username_wo
