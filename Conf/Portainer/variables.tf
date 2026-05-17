@@ -62,4 +62,102 @@ variable "output_path" {
   default     = "backup.tar.gz"
 }
 
+variable "sso" {
+  description = "Indique si l'authentification unique (SSO) est activée"
+  type        = bool
+  default     = true
+}
+
+variable "oauth_auto_create_users" {
+  description = "Indique si les utilisateurs doivent être créés automatiquement lors de la connexion via OAuth"
+  type        = bool
+  default     = true
+}
+
+variable "oauth_client_id" {
+  description = "ID client pour OAuth"
+  type        = string
+}
+
+variable "oauth_client_secret" {
+  description = "Secret client pour OAuth"
+  type        = string
+  sensitive   = true
+}
+
+variable "oauth_authorization_uri" {
+  description = "URI d'autorisation pour OAuth"
+  type        = string
+}
+
+variable "oauth_access_token_url" {
+  description = "URL pour obtenir le token d'accès OAuth"
+  type        = string
+}
+
+variable "oauth_resource_uri" {
+  description = "URI de la ressource pour OAuth"
+  type        = string
+}
+
+variable "oauth_redirect_uri" {
+  description = "URI de redirection pour OAuth"
+  type        = string
+}
+
+variable "oauth_logout_uri" {
+  description = "URI de déconnexion pour OAuth"
+  type        = string
+}
+
+variable "oauth_user_identifier" {
+  description = "Identifiant de l'utilisateur pour OAuth (ex: email)"
+  type        = string
+}
+
+variable "oauth_scopes" {
+  description = "Scopes pour OAuth"
+  type        = string
+}
+
+variable "oauth_auth_style" {
+  description = "Style d'authentification pour OAuth (ex: 'auto', 'in_header', 'in_params')"
+  type        = number
+  default     = 0
+}
+
 ############################################
+### Portainer Registry ###
+############################################
+
+variable "registry_name" {
+  description = "Nom du registre"
+  type        = string
+}
+
+variable "type" {
+  description = "Type de registre (ex: 'dockerhub', 'private')"
+  type        = number
+}
+
+variable "registry_url" {
+  description = "URL du registre"
+  type        = string
+}
+
+variable "registry_authentication" {
+  description = "Indique si l'authentification est requise pour le registre"
+  type        = bool
+  default     = true
+}
+
+variable "registry_username" {
+  description = "Nom d'utilisateur pour le registre"
+  type        = string
+}
+
+variable "registry_password" {
+  description = "Mot de passe pour le registre"
+  type        = string
+  sensitive   = true
+}

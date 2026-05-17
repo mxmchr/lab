@@ -15,6 +15,43 @@ module "portainer_stacks" {
   env = try(each.value.env, null)
 }
 
+
+resource "portainer_settings" "example" {
+  authentication_method = 3
+  enable_telemetry      = false
+  snapshot_interval     = "15m"
+  user_session_timeout  = "8h"
+
+  internal_auth_settings {
+    required_password_length = 20
+  }
+
+  oauth_settings {
+    sso                     = var.sso
+    oauth_auto_create_users = var.oauth_auto_create_users
+
+    client_id               = var.oauth_client_id
+    client_secret           = var.oauth_client_secret
+    authorization_uri       = var.oauth_authorization_uri
+    access_token_uri        = var.oauth_access_token_url
+    resource_uri            = var.oauth_resource_uri
+    redirect_uri            = var.oauth_redirect_uri
+    logout_uri              = var.oauth_logout_uri
+    user_identifier         = var.oauth_user_identifier
+    scopes                  = var.oauth_scopes
+    auth_style              = var.oauth_auth_style
+  }
+}
+
+resource "portainer_registry" "dockerhub" {
+  name           = var.registry_name
+  type           = var.type
+  url            = var.registry_url
+  authentication = var.registry_authentication
+  username       = var.registry_username
+  password       = var.registry_password
+}
+
 # resource "portainer_backup" "backup" {
 #   password    = var.portainer_backup_password
 #   output_path = var.output_path
