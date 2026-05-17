@@ -27,7 +27,7 @@ resource "portainer_stack" "standalone_repo_ephemeral" {
     for_each = var.env != null ? var.env : []
     content {
       name  = env.value.name
-      value = env.value.value
+      value = sensitive(env.value.value)
     }
   }
 }

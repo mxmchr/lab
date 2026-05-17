@@ -4,5 +4,5 @@ resource "portainer_registry" "dockerhub" {
   url            = var.registry_url
   authentication = var.registry_authentication
   username       = var.registry_username
-  password       = var.registry_password
+  password       = sensitive(var.registry_password)
 }
