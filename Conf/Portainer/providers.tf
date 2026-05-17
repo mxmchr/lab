@@ -15,5 +15,5 @@ terraform {
 provider "portainer" {
   endpoint = var.portainer_endpoint
   api_key  = var.portainer_api_key
-  skip_ssl_verify  = false
+  skip_ssl_verify  = var.skip_ssl_verify
 }

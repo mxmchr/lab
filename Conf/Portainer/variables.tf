@@ -66,6 +66,12 @@ variable "portainer_api_key" {
   sensitive   = true
 }
 
+variable "skip_ssl_verify" {
+  description = "Indique si la vérification SSL doit être ignorée pour Portainer"
+  type        = bool
+  default     = false
+}
+
 variable "portainer_backup_password" {
   description = "Mot de passe pour le backup Portainer"
   type        = string
