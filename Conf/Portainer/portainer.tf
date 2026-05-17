@@ -35,6 +35,8 @@ module "portainer_stacks" {
   repository_wo_version   = each.value.repository_wo_version
 
   env = try(each.value.env, null)
+
+  depends_on = [ module.portainer_environments ]
 }
 
 
