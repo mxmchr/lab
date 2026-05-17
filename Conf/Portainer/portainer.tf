@@ -1,3 +1,11 @@
+module "portainer_endpoint_group" {
+  for_each = var.groups
+  source   = "./modules/groups"
+
+  group_name        = each.key
+  group_description = each.value
+}
+
 module "portainer_environments" {
   for_each = var.environments
   source   = "./modules/environments"
@@ -6,7 +14,9 @@ module "portainer_environments" {
   environment_address     = each.value.environment_address
   public_ip               = each.value.public_ip
   type                    = each.value.type
-  group_id                = each.value.group_id
+  group_name              = each.value.group_name
+
+  depends_on = [ module.portainer_endpoint_group ]
 }
 
 module "portainer_stacks" {

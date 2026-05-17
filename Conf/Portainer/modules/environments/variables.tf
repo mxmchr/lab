@@ -23,3 +23,8 @@ variable "group_id" {
   type        = number
   default = 1
 }
+
+variable "group_name" {
+  description = "Nom du groupe à qui appartient l'environnement"
+  type        = string
+}

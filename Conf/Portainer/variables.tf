@@ -19,6 +19,14 @@ variable "s3_endpoint" {
 }
 
 ############################################
+###  Portainer Groups ###
+############################################
+
+variable "groups" {
+  type = map(string)
+}
+
+############################################
 ###  Portainer Environments ###
 ############################################
 
@@ -27,7 +35,7 @@ variable "environments" {
     environment_address = string
     public_ip           = string
     type                = number
-    group_id            = optional(number, 1)
+    group_name          = string
   }))
   
 }
