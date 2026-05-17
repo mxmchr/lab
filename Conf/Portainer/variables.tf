@@ -62,6 +62,42 @@ variable "output_path" {
   default     = "backup.tar.gz"
 }
 
+variable "authentication_method" {
+  description = "Méthode d'authentification pour Portainer (ex: 'internal', 'oauth')"
+  type        = number
+  default     = 3
+}
+
+variable "enable_telemetry" {
+  description = "Indique si la télémétrie est activée dans Portainer"
+  type        = bool
+  default     = false
+}
+
+variable "snapshot_interval" {
+  description = "Intervalle de snapshot pour Portainer (ex: '15m', '1h')"
+  type        = string
+  default     = "15m"
+}
+
+variable "user_session_timeout" {
+  description = "Durée avant expiration de la session utilisateur dans Portainer (ex: '8h', '1d')"
+  type        = string
+  default     = "8h"
+}
+
+variable "logo_url" {
+  description = "URL du logo personnalisé pour Portainer"
+  type        = string
+  default     = null
+}
+
+variable "required_password_length" {
+  description = "Longueur minimale requise pour les mots de passe dans Portainer"
+  type        = number
+  default     = 20
+}
+
 variable "sso" {
   description = "Indique si l'authentification unique (SSO) est activée"
   type        = bool

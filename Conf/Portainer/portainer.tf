@@ -16,14 +16,15 @@ module "portainer_stacks" {
 }
 
 
-resource "portainer_settings" "example" {
-  authentication_method = 3
-  enable_telemetry      = false
-  snapshot_interval     = "15m"
-  user_session_timeout  = "8h"
+resource "portainer_settings" "watch" {
+  authentication_method = var.authentication_method
+  enable_telemetry      = var.enable_telemetry
+  snapshot_interval     = var.snapshot_interval
+  user_session_timeout  = var.user_session_timeout
+  logo_url              = var.logo_url
 
   internal_auth_settings {
-    required_password_length = 20
+    required_password_length = var.required_password_length
   }
 
   oauth_settings {
