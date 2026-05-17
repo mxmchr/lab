@@ -43,13 +43,16 @@ resource "portainer_settings" "example" {
   }
 }
 
-resource "portainer_registry" "dockerhub" {
-  name           = var.registry_name
-  type           = var.type
-  url            = var.registry_url
-  authentication = var.registry_authentication
-  username       = var.registry_username
-  password       = var.registry_password
+module "portainer_registry" {
+  for_each = var.registries
+  source   = "./modules/registries"
+
+  registry_name           = each.key
+  type                    = each.value.type
+  registry_url            = each.value.registry_url
+  registry_authentication = each.value.registry_authentication
+  registry_username       = each.value.registry_username
+  registry_password       = each.value.registry_password
 }
 
 # resource "portainer_backup" "backup" {
