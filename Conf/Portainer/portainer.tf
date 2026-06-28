@@ -79,8 +79,3 @@ module "portainer_registry" {
   registry_username       = each.value.registry_username
   registry_password       = each.value.registry_password
 }
-
-# resource "portainer_backup" "backup" {
-#   password    = var.portainer_backup_password
-#   output_path = var.output_path
-# }
