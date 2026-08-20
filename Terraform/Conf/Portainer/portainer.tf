@@ -28,8 +28,8 @@ module "portainer_stacks" {
   deployment_type         = each.value.deployment_type
   method                  = each.value.method
   repository_url          = each.value.repository_url
-  git_username_wo         = each.value.git_username_wo
-  git_password_wo         = each.value.git_password_wo
+  git_username_wo         = var.git_repository.username
+  git_password_wo         = var.git_repository.password
   file_path_in_repository = each.value.file_path_in_repository
   stack_webhook           = each.value.stack_webhook
   repository_wo_version   = each.value.repository_wo_version

@@ -44,6 +44,15 @@ variable "environments" {
 ### Variables pour Portainer ###
 ############################################
 
+variable "git_repository" {
+  description = "Credentials for the Git repository containing the compose files"
+  type = object({
+    username = string
+    password = string
+  })
+  sensitive = true
+}
+
 variable "stacks" {
   type = map(object({
     deployment_type         = string
